@@ -1,3 +1,11 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .region-card-container {
   display: grid;
   grid-template-columns: repeat(5, minmax(20%, 1fr));
@@ -23,4 +31,91 @@
   height: 300px;
   object-fit: cover;
   display: block;
+}
+
+.map {
+  height: 100vh !important;
+  width: 100vw !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.region-detail-card-wrapper {
+  background: transparent;
+  width: 25%;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 2px;
+}
+.region-detail-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 15px;
+  width: 200px;
+}
+
+.region-detail-card p,
+.region-detail-card h2 {
+  color: #333;
+  font-weight: bold;
+}
+
+.region-detail-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 30px;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.banner h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  pointer-events: none;
+  margin: 0;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  letter-spacing: 2px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.banner button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.banner button:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

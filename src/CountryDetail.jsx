@@ -9,8 +9,9 @@ import {
   useLocation,
   useParams,
 } from "react-router-dom";
+import WorldMap from "./WorldMap";
 
-export default function CountryDetail() {
+export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
   const [countryData, setCountryData] = useState(null);
 
   const { countryName } = useParams();
@@ -19,15 +20,23 @@ export default function CountryDetail() {
     fetch(`https://restcountries.com/v3.1/name/${countryName}`)
       .then((res) => res.json())
       .then((data) => {
-        return setCountryData(data[0]);
+        const country = data[0];
+        setCountryData(country);
+        if (country) {
+          setCoords(country.latlng);
+          setZoom(6);
+        }
       });
-  }, [countryName]);
+  }, [countryName, setCoords, setZoom]);
 
   if (!countryData) return <h1>No Deets Avail</h1>;
 
-  console.log(countryData);
   return (
     <>
+      <Link to="/">
+        <button>Home</button>
+      </Link>
+      <WorldMap coords={coords} zoom={zoom}></WorldMap>
       <div className="country-info">
         <h1>{countryData.name.official}</h1>
         <h2>{countryData.capital[0]}</h2>

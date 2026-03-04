@@ -9,18 +9,25 @@ import {
   useLocation,
   useParams,
 } from "react-router-dom";
+import WorldMap from "./WorldMap";
 
-export default function RegionDetail({ countries, region }) {
+export default function RegionDetail({ countries, region, zoom, coords }) {
   const CountriesFiltered = countries.filter((country) => {
     return country.region.toLowerCase() === region;
   });
-  console.log(CountriesFiltered);
   if (CountriesFiltered.length === 0) return <h1>Loading....</h1>;
   return (
     <>
-      {CountriesFiltered.map((country) => {
-        return (
-          <div className="region-detail-card-wrapper">
+      <div className="banner">
+        <Link to="/">
+          <button>Home</button>
+        </Link>
+        <h1> {region.toUpperCase()}</h1>
+      </div>
+      <WorldMap coords={coords} zoom={zoom}></WorldMap>
+      <div className="region-detail-card-wrapper">
+        {CountriesFiltered.map((country) => {
+          return (
             <div className="region-detail-card">
               <Link to={`/name/${country.name.common}`}>
                 <img
@@ -31,9 +38,9 @@ export default function RegionDetail({ countries, region }) {
               </Link>
               <h2 key={country.name.official}>{country.name.official}</h2>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </>
   );
 }
