@@ -33,7 +33,13 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
 
   return (
     <>
-      <Link to="/">
+      <Link
+        to="/"
+        onClick={() => {
+          setZoom(2);
+          setCoords([20, 0]);
+        }}
+      >
         <button>Home</button>
       </Link>
       <WorldMap coords={coords} zoom={zoom}></WorldMap>

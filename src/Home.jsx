@@ -23,7 +23,13 @@ export default function Home({
   return (
     <>
       <div className="banner">
-        <Link to="/">
+        <Link
+          to="/"
+          onClick={() => {
+            setZoom(2);
+            setCoords([20, 0]);
+          }}
+        >
           <button>Home</button>
         </Link>
         <h1> Jacob's World Wide Web</h1>

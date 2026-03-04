@@ -11,7 +11,14 @@ import {
 } from "react-router-dom";
 import WorldMap from "./WorldMap";
 
-export default function RegionDetail({ countries, region, zoom, coords }) {
+export default function RegionDetail({
+  countries,
+  region,
+  zoom,
+  coords,
+  setCoords,
+  setZoom,
+}) {
   const CountriesFiltered = countries.filter((country) => {
     return country.region.toLowerCase() === region;
   });
@@ -19,7 +26,13 @@ export default function RegionDetail({ countries, region, zoom, coords }) {
   return (
     <>
       <div className="banner">
-        <Link to="/">
+        <Link
+          to="/"
+          onClick={() => {
+            setZoom(2);
+            setCoords([20, 0]);
+          }}
+        >
           <button>Home</button>
         </Link>
         <h1> {region.toUpperCase()}</h1>

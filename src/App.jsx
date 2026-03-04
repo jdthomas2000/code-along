@@ -16,8 +16,8 @@ import WorldMap from "./WorldMap";
 function App() {
   const [countries, setCountries] = useState([]);
   const [region, setRegion] = useState("");
-  const [coords, setCoords] = useState([1, 1]);
-  const [zoom, setZoom] = useState(1);
+  const [coords, setCoords] = useState([20, 0]);
+  const [zoom, setZoom] = useState(2);
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all?fields=name,flags,region")
