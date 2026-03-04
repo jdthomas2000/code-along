@@ -49,7 +49,7 @@ export default function RegionDetail({
                   alt={country.name.official}
                 ></img>
               </Link>
-              <h2 key={country.name.official}>{country.name.official}</h2>
+              <h2 key={country.name.official}>{country.name.common}</h2>
             </div>
           );
         })}
