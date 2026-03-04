@@ -27,6 +27,7 @@ export default function Search({ countries }) {
     <>
       <div className="search-container">
         <Autocomplete
+          className="glass-input"
           disablePortal
           options={countriesList}
           sx={{ width: 300 }}

@@ -29,16 +29,17 @@ export default function Home({
         <h1> Jacob's World Wide Web</h1>
       </div>
       <WorldMap zoom={zoom} coords={coords}></WorldMap>
-
-      <Search countries={countries}></Search>
-      <Regions
-        countries={countries}
-        setRegion={setRegion}
-        coords={coords}
-        setCoords={setCoords}
-        zoom={zoom}
-        setZoom={setZoom}
-      ></Regions>
+      <div className="center">
+        <Search countries={countries}></Search>
+        <Regions
+          countries={countries}
+          setRegion={setRegion}
+          coords={coords}
+          setCoords={setCoords}
+          zoom={zoom}
+          setZoom={setZoom}
+        ></Regions>
+      </div>
     </>
   );
 }
