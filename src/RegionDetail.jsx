@@ -10,6 +10,7 @@ import {
   useParams,
 } from "react-router-dom";
 import WorldMap from "./WorldMap";
+import Search from "./Search";
 
 export default function RegionDetail({
   countries,
@@ -23,6 +24,11 @@ export default function RegionDetail({
     return country.region.toLowerCase() === region;
   });
   if (CountriesFiltered.length === 0) return <h1>Loading....</h1>;
+
+  const sortedCountries = [...CountriesFiltered].sort((a, b) => {
+    return a.name.common > b.name.common ? 1 : -1;
+  });
+
   return (
     <>
       <div className="banner">
@@ -38,21 +44,29 @@ export default function RegionDetail({
         <h1> {region.toUpperCase()}</h1>
       </div>
       <WorldMap coords={coords} zoom={zoom}></WorldMap>
-      <div className="region-detail-card-wrapper">
-        {CountriesFiltered.map((country) => {
-          return (
-            <div className="region-detail-card">
-              <Link to={`/name/${country.name.common}`}>
-                <img
-                  className="temp"
-                  src={country.flags.png}
-                  alt={country.name.official}
-                ></img>
+      <div className="center">
+        <Search countries={CountriesFiltered}></Search>
+        <div className="region-detail-card-wrapper">
+          {sortedCountries.map((country) => {
+            return (
+              <Link
+                key={country.name.official}
+                to={`/name/${country.name.common}`}
+              >
+                <div className="region-detail-card">
+                  <div className="flag-container">
+                    <img
+                      className="temp"
+                      src={country.flags.png}
+                      alt={country.name.official}
+                    ></img>
+                  </div>
+                  <h2>{country.name.common}</h2>
+                </div>
               </Link>
-              <h2 key={country.name.official}>{country.name.common}</h2>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </>
   );

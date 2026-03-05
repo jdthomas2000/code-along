@@ -29,7 +29,7 @@ export default function Search({ countries }) {
         <Autocomplete
           className="glass-input"
           disablePortal
-          options={countriesList}
+          options={countriesList.sort()}
           sx={{ width: 300 }}
           renderInput={(params) => (
             <TextField {...params} label="Search for Country..." />

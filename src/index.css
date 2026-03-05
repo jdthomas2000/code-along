@@ -60,7 +60,6 @@ body,
 
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 
   color: white;
@@ -103,50 +102,60 @@ body,
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
-  padding: 15px;
+  padding-top: 15px;
   width: 200px;
+  height: 215px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
-.region-detail-card p,
-.region-detail-card h2 {
-  color: #333;
-  font-weight: bold;
-}
-
-.region-detail-card img {
+.flag-container {
   width: 100%;
+  height: 120px;
   border-radius: 8px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.flag-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.region-detail-card h2 {
+  margin-top: auto;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .banner {
   display: flex;
   align-items: center;
-  gap: 20px;
   padding: 15px 30px;
   top: 0;
   width: 100%;
   z-index: 1;
-
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .banner h1 {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 40%;
   margin: 0;
   pointer-events: none;
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: #2c3e50;
   letter-spacing: 2px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   flex-grow: 1;
   justify-content: center;
 }
@@ -174,7 +183,6 @@ body,
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.5px);
-  -webkit-backdrop-filter: blur(8.5px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   justify-self: center;
   display: flex;
@@ -188,4 +196,140 @@ body,
   min-height: 100vh;
   justify-content: center;
   align-items: center;
+  padding: 50px 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.country-info {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: black;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.country-info h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+}
+
+.country-info p {
+  font-size: 1.1rem;
+  margin: 12px 0;
+  font-weight: 300;
+}
+
+.country-info p strong {
+  font-weight: 600;
+  color: black;
+}
+
+.country-info ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.country-info li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.flags {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  text-align: left;
+}
+
+.flags img {
+  width: 100%;
+  height: 80%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.flags img:hover {
+  transform: scale(1.05);
+}
+
+.visual-box {
+  width: 300px;
+  height: 250px;
+  padding: 15px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(3px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 0.9rem;
+}
+.visual-box p {
+  color: black;
+  margin: 5px;
+  padding: 0;
+  line-height: 1.2;
+}
+.visual-box strong {
+  font-size: 1rem;
+  margin-top: 8px;
+  margin-bottom: 2px;
+}
+.visual-box .current-temp {
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+.visual-box p:has(.icon) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 4px 0;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.visual-box .icon {
+  color: #ffce45;
+  flex-shrink: 0;
+}
+.visual-box img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+}
+.temp-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.temp-row div {
+  margin: 0;
+  font-size: 0.9rem;
+  color: black;
 }

@@ -10,6 +10,7 @@ import {
   useParams,
 } from "react-router-dom";
 import WorldMap from "./WorldMap";
+import { Weather } from "./Weather";
 
 export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
   const [countryData, setCountryData] = useState(null);
@@ -17,7 +18,7 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
   const { countryName } = useParams();
 
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/name/${countryName}`)
+    fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
       .then((res) => res.json())
       .then((data) => {
         const country = data[0];
@@ -33,23 +34,39 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
 
   return (
     <>
-      <Link
-        to="/"
-        onClick={() => {
-          setZoom(3);
-          setCoords([20, 0]);
-        }}
-      >
-        <button>Home</button>
-      </Link>
       <WorldMap coords={coords} zoom={zoom}></WorldMap>
+      <div className="banner">
+        <Link
+          to="/"
+          onClick={() => {
+            setZoom(3);
+            setCoords([20, 0]);
+          }}
+        >
+          <button>Home</button>
+        </Link>
+        <h1> {countryData.name.common.toUpperCase()}</h1>
+      </div>
       <div className="country-info">
-        <h1>{countryData.name.official}</h1>
-        <h2>{countryData.capital[0]}</h2>
-        <p>{countryData.region}</p>
-        <p>{countryData.subregion}</p>
-        <p>{countryData.population}</p>
-        <p>Currency:</p>
+        <h1>
+          <strong>Official Name: </strong>
+          {countryData.name.official}
+        </h1>
+        <h2>
+          <strong>Capital:</strong> {countryData.capital[0]}
+        </h2>
+        <p>
+          <strong>Region:</strong> {countryData.region}
+        </p>
+        <p>
+          <strong>Subregion:</strong> {countryData.subregion}
+        </p>
+        <p>
+          <strong>Population:</strong> {countryData.population.toLocaleString()}
+        </p>
+        <p>
+          <strong>Currency:</strong>
+        </p>
         <ul>
           {countryData.currencies
             ? Object.values(countryData.currencies).map((currency) => (
@@ -57,7 +74,9 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
               ))
             : "N/A"}
         </ul>
-        <p>Languages:</p>
+        <p>
+          <strong>Languages:</strong>
+        </p>
         <ul>
           {countryData.languages
             ? Object.values(countryData.languages).map((lang) => (
@@ -65,9 +84,23 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
               ))
             : "N/A"}
         </ul>
-
-        <div className="flags">
+      </div>
+      <div className="flags">
+        <div className="visual-box">
+          <p>
+            {" "}
+            <strong>Flag: </strong>
+          </p>
           <img src={countryData.flags.png} alt={countryData.flags.alt}></img>
+        </div>
+        <div className="visual-box">
+          <Weather coords={coords}></Weather>
+        </div>
+        <div className="visual-box">
+          <p>
+            {" "}
+            <strong>Coat of Arms: </strong>
+          </p>
           <img
             src={countryData.coatOfArms.png}
             alt={countryData.flags.alt}
