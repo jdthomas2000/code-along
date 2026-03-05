@@ -36,7 +36,7 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
       <Link
         to="/"
         onClick={() => {
-          setZoom(2);
+          setZoom(3);
           setCoords([20, 0]);
         }}
       >

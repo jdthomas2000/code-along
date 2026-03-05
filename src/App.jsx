@@ -17,7 +17,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [region, setRegion] = useState("");
   const [coords, setCoords] = useState([20, 0]);
-  const [zoom, setZoom] = useState(2);
+  const [zoom, setZoom] = useState(3);
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all?fields=name,flags,region")
