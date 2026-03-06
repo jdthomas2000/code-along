@@ -46,32 +46,32 @@ export const Weather = ({ coords }) => {
       case 0:
         return (
           <p>
-            <WiDaySunny size={30} className="icon" /> Clear sky
+            <WiDaySunny size={45} className="icon" /> Clear sky
           </p>
         );
       case 1:
         return (
           <p>
-            <WiDayCloudy size={30} className="icon" /> Mainly Clear
+            <WiDayCloudy size={45} className="icon" /> Mainly Clear
           </p>
         );
       case 2:
         return (
           <p>
-            <WiCloud size={30} className="icon" /> Partly Cloudy
+            <WiCloud size={45} className="icon" /> Partly Cloudy
           </p>
         );
       case 3:
         return (
           <p>
-            <WiCloudy size={30} className="icon" /> Overcast
+            <WiCloudy size={45} className="icon" /> Overcast
           </p>
         );
       case 45:
       case 48:
         return (
           <p>
-            <WiFog size={30} className="icon" /> Fog
+            <WiFog size={45} className="icon" /> Fog
           </p>
         );
       case 51:
@@ -79,14 +79,14 @@ export const Weather = ({ coords }) => {
       case 55:
         return (
           <p>
-            <WiShowers size={30} className="icon" /> Drizzle
+            <WiShowers size={45} className="icon" /> Drizzle
           </p>
         );
       case 56:
       case 57:
         return (
           <p>
-            <WiRainMix size={30} className="icon" /> Freezing Drizzle
+            <WiRainMix size={45} className="icon" /> Freezing Drizzle
           </p>
         );
       case 61:
@@ -94,14 +94,14 @@ export const Weather = ({ coords }) => {
       case 65:
         return (
           <p>
-            <WiRain size={30} className="icon" /> Rain
+            <WiRain size={45} className="icon" /> Rain
           </p>
         );
       case 66:
       case 67:
         return (
           <p>
-            <WiRainMix size={30} className="icon" /> Freezing Rain
+            <WiRainMix size={45} className="icon" /> Freezing Rain
           </p>
         );
       case 71:
@@ -109,13 +109,13 @@ export const Weather = ({ coords }) => {
       case 75:
         return (
           <p>
-            <WiSnow size={30} className="icon" /> Snow fall
+            <WiSnow size={45} className="icon" /> Snow fall
           </p>
         );
       case 77:
         return (
           <p>
-            <WiSnowWind size={30} className="icon" /> Snow grains
+            <WiSnowWind size={45} className="icon" /> Snow grains
           </p>
         );
       case 80:
@@ -123,27 +123,27 @@ export const Weather = ({ coords }) => {
       case 82:
         return (
           <p>
-            <WiShowers size={30} className="icon" /> Rain showers
+            <WiShowers size={45} className="icon" /> Rain showers
           </p>
         );
       case 85:
       case 86:
         return (
           <p>
-            <WiSnow size={30} className="icon" /> Snow showers
+            <WiSnow size={45} className="icon" /> Snow showers
           </p>
         );
       case 95:
         return (
           <p>
-            <WiThunderstorm size={30} className="icon" /> Thunderstorm
+            <WiThunderstorm size={45} className="icon" /> Thunderstorm
           </p>
         );
       case 96:
       case 99:
         return (
           <p>
-            <WiStormShowers size={30} className="icon" /> Thunderstorm with hail
+            <WiStormShowers size={45} className="icon" /> Thunderstorm with hail
           </p>
         );
       default:
@@ -153,28 +153,46 @@ export const Weather = ({ coords }) => {
   return (
     <>
       <p>
+        <strong>Current Weather:</strong>
+      </p>
+      <div className="minor-stat">
+        <p className="major-stat-label">Temperature</p>
+        <p className="major-current-temp">
+          {weatherData.current.temperature_2m} °F
+        </p>
+      </div>
+      <div className="minor-stat-wrapper">
+        <div className="minor-stat">
+          <p className="minor-stat-label">Humidity</p>
+          <p className="current-temp">
+            {weatherData.current.relative_humidity_2m} %
+          </p>
+        </div>
+        <div className="minor-stat">
+          <p className="minor-stat-label">Windspeed</p>
+          <p className="current-temp">
+            {weatherData.current.wind_speed_10m} mph
+          </p>
+        </div>
+      </div>
+      <p>
         <strong>Daily:</strong>
       </p>
       {weatherType()}
-      <div className="temp-row">
-        <div>High: {weatherData.daily.temperature_2m_max[0]} °F</div>
-        <div>Low: {weatherData.daily.temperature_2m_min[0]} °F</div>
+      <div className="minor-stat-wrapper">
+        <div className="minor-stat">
+          <p className="minor-stat-label">High</p>
+          <p className="current-temp">
+            {weatherData.daily.temperature_2m_max[0]} °F %
+          </p>
+        </div>
+        <div className="minor-stat">
+          <p className="minor-stat-label">Low</p>
+          <p className="current-temp">
+            {weatherData.daily.temperature_2m_min[0]} °F
+          </p>
+        </div>
       </div>
-      <p>
-        <strong>Current Weather:</strong>
-      </p>
-      <p className="current-temp">
-        {" "}
-        Temperature: {weatherData.current.temperature_2m} °F
-      </p>
-      <p className="current-temp">
-        Relative Humidity: {weatherData.current.relative_humidity_2m} %
-      </p>
-
-      <p className="current-temp">
-        {" "}
-        Windspeed: {weatherData.current.wind_speed_10m} mph
-      </p>
     </>
   );
 };

@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import WorldMap from "./WorldMap";
 import { Weather } from "./Weather";
+import Gallery from "./Gallery";
 
 export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
   const [countryData, setCountryData] = useState(null);
@@ -93,9 +94,7 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
           </p>
           <img src={countryData.flags.png} alt={countryData.flags.alt}></img>
         </div>
-        <div className="visual-box">
-          <Weather coords={coords}></Weather>
-        </div>
+
         <div className="visual-box">
           <p>
             {" "}
@@ -106,7 +105,12 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
             alt={countryData.flags.alt}
           ></img>
         </div>
+        <div className="visual-box">
+          <Weather coords={coords}></Weather>
+        </div>
       </div>
+
+      <Gallery query={`${countryData.name.common} scenery`}></Gallery>
     </>
   );
 }
