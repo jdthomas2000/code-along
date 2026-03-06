@@ -76,7 +76,7 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
             : "N/A"}
         </ul>
         <p>
-          <strong>Languages:</strong>
+          <strong>Languages</strong>
         </p>
         <ul>
           {countryData.languages
@@ -90,7 +90,7 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
         <div className="visual-box">
           <p>
             {" "}
-            <strong>Flag: </strong>
+            <strong>Flag </strong>
           </p>
           <img src={countryData.flags.png} alt={countryData.flags.alt}></img>
         </div>
@@ -98,7 +98,7 @@ export default function CountryDetail({ setCoords, setZoom, coords, zoom }) {
         <div className="visual-box">
           <p>
             {" "}
-            <strong>Coat of Arms: </strong>
+            <strong>Coat of Arms </strong>
           </p>
           <img
             src={countryData.coatOfArms.png}

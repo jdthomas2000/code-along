@@ -28,14 +28,17 @@ const Gallery = ({ query }) => {
 
   return (
     <>
-      <div className="gallery-container">
-        {images.photos.map((photo) => {
-          return (
-            <div className="country-image-container">
-              <img src={photo.src.original} alt={photo.alt}></img>
-            </div>
-          );
-        })}
+      <div className="main-gallery-card">
+        <h3 className="gallery-title">Gallery</h3>
+        <div className="images-grid">
+          {images.photos.map((photo) => {
+            return (
+              <div className="photo-frame">
+                <img src={photo.src.original} alt={photo.alt}></img>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );

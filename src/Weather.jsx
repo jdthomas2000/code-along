@@ -153,7 +153,7 @@ export const Weather = ({ coords }) => {
   return (
     <>
       <p>
-        <strong>Current Weather:</strong>
+        <strong>Current Weather</strong>
       </p>
       <div className="minor-stat">
         <p className="major-stat-label">Temperature</p>
