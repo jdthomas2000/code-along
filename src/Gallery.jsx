@@ -33,8 +33,8 @@ const Gallery = ({ query }) => {
         <div className="images-grid">
           {images.photos.map((photo) => {
             return (
-              <div className="photo-frame">
-                <img src={photo.src.original} alt={photo.alt}></img>
+              <div className="photo-frame" key={photo.alt}>
+                <img src={photo.src.medium} alt={photo.alt}></img>
               </div>
             );
           })}
